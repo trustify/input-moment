@@ -19,22 +19,14 @@ var App = React.createClass({
   render() {
     return (
       <div className="app">
-        <h1>{packageJson.name}</h1>
-        <h2>{packageJson.description}</h2>
         <form>
-        <div className="input">
-          <input
-            type="text"
-            value={this.state.m.format('llll')}
-            readOnly
+          <InputMoment
+            moment={this.state.m}
+            onChange={this.handleChange}
+            onSave={this.handleSave}
           />
-        </div>
-        <InputMoment
-          moment={this.state.m}
-          onChange={this.handleChange}
-          onSave={this.handleSave}
-        />
         </form>
+
       </div>
     );
   },

@@ -1,6 +1,5 @@
 var cx = require('classnames');
 var blacklist = require('blacklist');
-var moment = require('moment');
 var React = require('react');
 var range = require('lodash/range');
 var chunk = require('lodash/chunk');
@@ -40,7 +39,7 @@ module.exports = React.createClass({
       range(1, 42-d3-d2+1)
     );
 
-    var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
     return (
       <div className={cx('m-calendar', this.props.className)}>

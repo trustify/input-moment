@@ -1,8 +1,6 @@
 @import 'variables';
 
 .m-calendar {
-  display: inline-block;
-
   table {
     width: 100%;
     border-collapse: collapse;
@@ -11,19 +9,18 @@
   }
 
   td {
+    border: 1px solid @color-gray;
+    color: @color-gray;
+    cursor: pointer;
     padding: 8px 0;
     text-align: center;
-    cursor: pointer;
-    color: @color-gray;
-    border: 1px solid @color-gray;
+    user-select: none;
   }
 
   thead {
     td {
-      color: @color-blue;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
+      border: none;
+      color: #aaa;
       font-size: 12px;
     }
   }
@@ -32,43 +29,47 @@
     color: #666666;
 
     &:hover {
-      background: @color-blue;
+      background: @color-lighter-blue;
       border-color: @color-blue;
       color: @color-white;
     }
   }
 
   .current-day {
-    color: @color-blue;
-    font-weight: bold;
+    border-color: @color-blue;
+    background: @color-blue;
+    color: @color-white;
+
+    &:hover {
+      background: @color-blue;
+    }
   }
 
   .prev-month,
   .next-month {
-    color: #999999;
+    color: #999;
+
+    i {
+      color: @color-blue !important;
+    }
   }
 
   .toolbar {
-    line-height: 30px;
     color: @color-blue;
     text-align: center;
-    margin-bottom: 13px;
+    margin-bottom: 4px;
+    padding: 0 5px;
 
     button {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      color: #ffffff;
-      border: 1px solid @color-blue;
-      border-radius: 50%;
-      background: @color-blue;
-      font-size: 20px;
-      padding: 0;
-      text-align: center;
-      outline: 0;
-      z-index: 5;
+      background: #fff;
+      border: none;
       cursor: pointer;
+      font-size: 14px;
+      outline: 0;
+      padding: 2px 0 0 0;
+      position: relative;
+      text-align: center;
+      z-index: 5;
     }
 
     .prev-month {
@@ -80,7 +81,8 @@
     }
 
     .current-date {
-      color: @color-blue;
+      font-size: 15px;
+      color: #777;
     }
   }
 }

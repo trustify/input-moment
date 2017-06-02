@@ -4,12 +4,13 @@
 @import 'slider';
 
 .im-btn {
-  display: inline-block;
   background-color: #ffffff;
   border: 0;
-  outline: 0;
   cursor: pointer;
+  display: inline-block;
   line-height: 1;
+  outline: 0;
+  user-select: none;
 
   &:before {
     margin-right: 6px;
@@ -19,9 +20,8 @@
 .m-input-moment {
   display: inline-block;
   width: 330px;
-  padding: 12px 15px;
-  border-radius: 3px;
-  border: 1px solid @color-gray;
+  padding: 20px 15px;
+  text-align: center;
 
   .options {
     width: 100%;
@@ -33,10 +33,10 @@
       width: 50%;
       color: @color-blue;
       text-align: center;
-      font-size: 16px;
-      padding: 7px;
+      font-size: 15px;
+      padding: 10px;
       border: 1px solid @color-blue;
-      border-radius: 3px;
+      border-radius: 5px;
 
       &:first-child {
         border-top-right-radius: 0;
@@ -55,28 +55,34 @@
     }
   }
 
-  .tab {
+  .im-tab {
     display: none;
-    height: 310px;
+    border: 1px solid #eee;
+    box-shadow: inset 0 0 10px #eaeaea;
+    border-radius: 5px;
+    padding: 15px;
 
-    &.is-active {
+    &.im-active-tab {
       display: block;
+    }
+
+    &.im-calendar-tab {
+      padding: 8px 15px 15px 15px;
+    }
+
+    &.im-time-tab {
+      padding: 15px 0;
     }
   }
 
-  .tabs {
-    margin-bottom: 11px;
-  }
-
   .btn-save {
-    display: block;
-    margin-top: 10px;
-    width: 100%;
     background-color: @color-blue;
-    padding: 12px 0;
-    text-align: center;
-    color: #ffffff;
-    font-size: 16px;
     border-radius: 3px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 14px 30px;
+    text-align: center;
   }
 }
