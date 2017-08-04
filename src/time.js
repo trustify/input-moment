@@ -1,4 +1,5 @@
 var cx = require('classnames');
+var moment = require('moment-timezone');
 var React = require('react');
 
 module.exports = React.createClass({
@@ -55,7 +56,8 @@ module.exports = React.createClass({
     }
 
     m.hours(newHour);
-    this.props.onChange(m);
+
+    this.props.onChange(m, this.props.timezone);
   },
 
   increaseMinutes() {
@@ -85,7 +87,18 @@ module.exports = React.createClass({
 
   changeMinute(newMinute) {
     this.props.moment.minutes(newMinute);
-    this.props.onChange(this.props.moment);
+    this.props.onChange(this.props.moment, this.props.timezone);
+  },
+
+  changeTimezone(event) {
+    let newTimezone = event.target.value;
+
+    // change 3:30pm EST into "3:30pm PST" (instead of actually converting, and saying 12:30pm PST)
+    let dateFormat = 'YYYY-MM-DDTHH:mm:ss';
+    let timeWithoutTimezone = this.props.moment.format(dateFormat);
+    let newMoment = moment.tz(timeWithoutTimezone, dateFormat, newTimezone);
+
+    this.props.onChange(newMoment, newTimezone);
   },
 
   toggleMeridiem() {
@@ -115,6 +128,30 @@ module.exports = React.createClass({
         </div>
       </div>
     );
+  },
+
+  timezonePicker() {
+    if(this.props.timezone) {
+      return (
+        <div id='im-timezone-container'>
+          <div id='im-timezone-header'>
+            Time Zone
+          </div>
+          <select id='timezone' value={this.props.timezone} onChange={this.changeTimezone}>
+            <option value='America/Anchorage'>Alaska</option>
+            <option value='America/Chicago'>Central</option>
+            <option value='America/New_York'>Eastern</option>
+            <option value='Pacific/Honolulu'>Hawaii-Aleutian</option>
+            <option value='America/Adak'>Hawaii-Aleutian (Alaska)</option>
+            <option value='America/Denver'>Mountain</option>
+            <option value='America/Phoenix'>Mountain (Arizona)</option>
+            <option value='America/Los_Angeles'>Pacific</option>
+          </select>
+        </div>
+      );
+    } else {
+      return null;
+    }
   },
 
   render() {
@@ -153,6 +190,7 @@ module.exports = React.createClass({
         </div>
 
         {this.meridiemPicker()}
+        {this.timezonePicker()}
       </div>
     );
   }

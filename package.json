@@ -18,7 +18,7 @@
   "author": "Wang Zuo",
   "license": "ISC",
   "peerDependencies": {
-    "moment": "^2.10.6",
+    "moment-timezone": "^0.5.13",
     "react": "^0.14.0 || ^15.0.0",
     "react-dom": "^0.14.0 || ^15.0.0"
   },
@@ -36,7 +36,7 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
-    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.13",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-test-renderer": "^15.4.2",
@@ -48,7 +48,8 @@
     "blacklist": "^1.1.4",
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
-    "react-input-slider": "^1.5.0"
+    "react-input-slider": "^1.5.0",
+    "moment-timezone": "^0.5.13"
   },
   "repository": {
     "type": "git",
