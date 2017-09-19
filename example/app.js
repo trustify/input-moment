@@ -25,6 +25,7 @@ var App = React.createClass({
             timezone='America/New_York'
             onChange={this.handleChange}
             onSave={this.handleSave}
+            minuteIncrement={5}
           />
         </form>
 

@@ -4,18 +4,6 @@ var React = require('react');
 
 module.exports = React.createClass({
     displayName: 'Time',
-    minuteIncrements: this.generateMinuteArray(this.props.minuteIncrement),
-    generateMinuteArray(minuteIncrement) {
-        var increment = 15;
-        if(minuteIncrement){
-            increment = minuteIncrement;
-        }
-        var minuteArray = [];
-        for(var k=0; k<60;k+=increment){
-            minuteArray.push(k);
-        }
-        return minuteArray;
-    },
     displayableHour() {
         var hour = this.props.moment.hour();
 
@@ -71,9 +59,9 @@ module.exports = React.createClass({
     },
 
     increaseMinutes() {
-        var newMinute = this.minuteIncrements[0];
+        var newMinute = this.props.minuteIncrements[0];
 
-        for(var increment of this.minuteIncrements) {
+        for(var increment of this.props.minuteIncrements) {
             if(this.props.moment.minute() < increment) {
                 newMinute = increment;
                 break;
@@ -84,9 +72,9 @@ module.exports = React.createClass({
     },
 
     decreaseMinutes() {
-        var newMinute = this.minuteIncrements[this.minuteIncrements.length - 1];
+        var newMinute = this.props.minuteIncrements[this.props.minuteIncrements.length - 1];
 
-        for(var increment of this.minuteIncrements) {
+        for(var increment of this.props.minuteIncrements) {
             if(this.props.moment.minute() > increment) {
                 newMinute = increment;
             }
