@@ -66,8 +66,12 @@ module.exports = React.createClass({
         if(timezone) {
             m = m.tz(timezone);
         }
-
-        var props = blacklist(this.props, 'className', 'moment', 'saveText', 'timezone', 'upArrowIcon', 'downArrowIcon', 'prevMonthIcon', 'nextMonthIcon', 'onChange', 'onSave');
+        var minuteArray = [];
+        for (var k = 0; k < 60; k += this.props.minuteIncrement) {
+            minuteArray.push(k);
+        }
+        var props = blacklist(this.props, 'className', 'moment', 'saveText', 'timezone',
+            'upArrowIcon', 'downArrowIcon', 'prevMonthIcon', 'nextMonthIcon', 'onChange', 'onSave', 'minuteIncrement');
         props.className = cx('m-input-moment', this.props.className);
 
         return (
@@ -97,7 +101,7 @@ module.exports = React.createClass({
                     onChange={this.props.onChange}
                     upArrowIcon={this.props.upArrowIcon}
                     downArrowIcon={this.props.downArrowIcon}
-                    minuteIncrement={this.props.minuteIncrement}
+                    minuteIncrements={minuteArray}
                 />
 
                 {this.footerButton()}
