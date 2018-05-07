@@ -50,6 +50,10 @@ module.exports = React.createClass({
         }
     },
 
+    getError() {
+        return !this.props.error ? null : <div className="datepicker-error">{this.props.error}</div>;
+    },
+
     handleSave(event) {
         event.preventDefault();
 
@@ -71,7 +75,7 @@ module.exports = React.createClass({
             minuteArray.push(k);
         }
         var props = blacklist(this.props, 'className', 'moment', 'saveText', 'timezone',
-            'upArrowIcon', 'downArrowIcon', 'prevMonthIcon', 'nextMonthIcon', 'onChange', 'onSave', 'minuteIncrement');
+            'upArrowIcon', 'downArrowIcon', 'prevMonthIcon', 'nextMonthIcon', 'onChange', 'onSave', 'minuteIncrement', 'error');
         props.className = cx('m-input-moment', this.props.className);
 
         return (
@@ -103,6 +107,8 @@ module.exports = React.createClass({
                     downArrowIcon={this.props.downArrowIcon}
                     minuteIncrements={minuteArray}
                 />
+
+                {this.getError()}
 
                 {this.footerButton()}
             </div>
